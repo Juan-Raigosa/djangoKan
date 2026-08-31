@@ -28,16 +28,6 @@ class Empleado(models.Model):
     fecha_nacimiento = models.DateField()
     tareas_realizadas = models.IntegerField()
     
-class Producto(models.Model):
-    nombre = models.CharField(max_length=100)
-    categoria = models.CharField(max_length=50)
-    cantidad = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    descripcion = models.CharField(max_length=1000)
-    codigo_producto = models.IntegerField()
-    
-
-
 class Administrador(models.Model):
     nombre = models.CharField(max_length=100)
     celular = models.CharField(max_length=10)
@@ -75,7 +65,7 @@ class Pedido(models.Model):
         ("inactivo","Inactivo")
     )
     estado = models.CharField(choices=est, max_length=10, default="activo")
-    evidencias = models.CharField(models.CharField(max_length=255))
+    evidencias = models.CharField(max_length=255)
     descripcion = models.CharField(max_length=1000)
     id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     id_empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
